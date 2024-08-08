@@ -24,6 +24,13 @@ header{
     gap: 48px;
 }
 
+#nav-list-admin{
+    display: flex;
+    list-style: none;
+    gap: 48px;
+    background-color: bisque;
+}
+
 .nav-item a{
     color: white;
     text-decoration: none;

@@ -1,5 +1,12 @@
-<main id="content">
-    <form id="formlogin">
+<?php 
+session_start();
+    if(isset($_SESSION['usuario'])){
+        echo $_SESSION['usuario']['nome'];
+        echo "<a href='sair.php'>Sair</a>";
+    }else{
+        ?>
+        <main id="content">
+    <form id="formlogin" method="post" action="paginas/login/autenticar.php">
         <div class="row text-center">
             <div class="col-12">
                 <h2>Faça seu login</h2>
@@ -14,23 +21,9 @@
         </div>
         </div>
         <button class="btn btn-info" onclick="login()">Acessar</button>
+        <a href="index.php?pag=cadastro" class="btn btn-info">Não tenho conta</a>
     </form>
 </main>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    function login(){
-        var login = $('#txtLogin').val();
-        var senha = $('#txtSenha').val();
-
-       $.ajax(
-            method: "POST",
-            url: 'login/autenticar.php',
-            data: {login,senha},
-            dataType: "html",
-            success: function(msg){
-                alert(msg);
-            }
-       )
+        <?php
     }
-</script>
+?>

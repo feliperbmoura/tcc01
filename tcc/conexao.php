@@ -1,10 +1,11 @@
 <?php
 $user = 'root';
 $password = '';
+$banco = 'tcc';
+$servidor = 'localhost';
 
-try {
-    $conn = new PDO('mysql:host=localhost;dbname=tcc', $user, $password);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch(PDOException $e) {
-      echo 'ERROR: ' . $e->getMessage();
-  }
+try{
+    $pdo = new PDO("mysql:dbname=$banco;host=$servidor;charset=utf8","$user","$password");
+}catch(Exception $e){
+    echo "Não foi possivel conectar no banco". $e;
+}
